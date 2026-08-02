@@ -1,2 +1,18 @@
-/dataset
-/trainer
+# Virtual Environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Face dataset
+dataset/
+
+# Trained models
+trainer/
+
+# VS Code settings (optional)
+.vscode/
+
+# Environment variables
+.env
