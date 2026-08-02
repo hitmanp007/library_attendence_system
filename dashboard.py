@@ -1,9 +1,9 @@
 from tkinter import *
-from register_data import detail
+
 root = Tk()
 def details():
     root.destroy()
-    import register_data
+    from register_data import detail
 
 def cap():
     root.destroy()

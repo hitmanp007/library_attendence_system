@@ -4,44 +4,35 @@ root = Tk()
 
 class detail:
 
-    def __init__(self):
-        self.win = Toplevel()
-        self.win.title("Student Details")
-        self.win.geometry("350x350")
+    l1 = Label(root,text="Student Data")
+    l1.pack()
 
-        # Name
-        Label(self.win, text="Name").pack()
-        self.name_entry = Entry(self.win)
-        self.name_entry.pack()
 
-        # ID
-        Label(self.win, text="ID").pack()
-        self.id_entry = Entry(self.win)
-        self.id_entry.pack()
+    l2 = Label(root,text="Name")
+    l2.pack()
+    t1 = Entry(root)
+    t1.pack()
+    l3 = Label(root,text="ID")
+    l3.pack()
+    t2 = Entry(root)
+    t2.pack()
 
-        # Mobile
-        Label(self.win, text="Mobile").pack()
-        self.mobile_entry = Entry(self.win)
-        self.mobile_entry.pack()
+    l4 = Label(root,text="Mobile")
+    l4.pack()
+    t3 = Entry(root)
+    t3.pack()
 
-        # Branch
-        Label(self.win, text="Branch").pack()
-        self.branch_entry = Entry(self.win)
-        self.branch_entry.pack()
+    l5 = Label(root,text="Branch")
+    l5.pack()
+    t4= Entry(root)
+    t4.pack()
 
-        # Semester
-        Label(self.win, text="Semester").pack()
-        self.sem_entry = Entry(self.win)
-        self.sem_entry.pack()
+    l6 = Label(root,text="Sem")
+    l6.pack()
+    t5 = Entry(root)
+    t5.pack()
 
-        # Submit Button
-        Button(
-            self.win,
-            text="Submit",
-            command=self.show
-        ).pack(pady=20)
-
-    def show(self):
+def show():
         try:
             db = pymysql.connect(
                 host="localhost",
@@ -58,12 +49,12 @@ class detail:
             """
 
             values = (
-                self.name_entry.get(),
-                self.id_entry.get(),
-                self.mobile_entry.get(),
-                self.branch_entry.get(),
-                self.sem_entry.get()
-            )
+                    detail.t1.get(),
+                    detail.t2.get(),
+                    detail.t3.get(),
+                    detail.t4.get(),
+                    detail.t5.get()
+                )
 
             cursor.execute(sql, values)
             db.commit()
@@ -75,6 +66,11 @@ class detail:
 
         except Exception as e:
             print("Error:", e)
+    
+    
 
-
-root.mainloop()            
+        
+    
+# Submit Button
+Button(root,text="Submit", command=show).pack(pady=20)
+mainloop()            
