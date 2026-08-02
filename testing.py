@@ -1,4 +1,11 @@
 import cv2
+import os
 
-print(cv2.__version__)
-print(cv2.data.haarcascades)
+path = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+
+print(path)
+print(os.path.exists(path))
+
+face_detector = cv2.CascadeClassifier(path)
+
+print(face_detector.empty())

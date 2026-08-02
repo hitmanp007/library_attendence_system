@@ -7,7 +7,7 @@ face_cascade = cv2.CascadeClassifier(
     cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
 )
 
-names = ["", "Muskan"]  # ID 1 = Muskan
+names = ["", "hero"]  # ID 1 = Muskan
 
 cam = cv2.VideoCapture(0)
 
@@ -48,7 +48,7 @@ while True:
 
     cv2.imshow("Face Recognition", img)
 
-    if cv2.waitKey(10) & 0xff == 27:
+    if cv2.waitKey(10) & 0xff == ord("q"):
         break
 
 cam.release()

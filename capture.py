@@ -7,6 +7,11 @@ face_detector = cv2.CascadeClassifier(
     cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
 )
 
+if face_detector.empty():
+    print("Error: Haar Cascade file could not be loaded.")
+    print(cv2.data.haarcascades)
+    exit()
+
 face_id = input("Enter User ID: ")
 
 count = 0
@@ -32,9 +37,9 @@ while True:
 
         cv2.imshow("Capture Face", img)
 
-    k = cv2.waitKey(100) & 0xff == ord("q")
+    k = cv2.waitKey(100) & 0xff 
 
-    if k == 27:
+    if k == ord("q"):
         break
     elif count >= 50:
         break
