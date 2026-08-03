@@ -1,4 +1,7 @@
 import cv2
+from datetime import datetime
+import pymysql
+
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read("trainer/trainer.yml")
@@ -33,6 +36,55 @@ while True:
 
         if confidence < 70:
             name = names[id]
+            today = datetime.now().strftime("%Y-%m-%d")
+            current_time = datetime.now()
+
+            db = pymysql.connect(
+                host="localhost",
+                user="root",
+                password="password",      
+                database="college_info"
+            )
+
+            cursor = db.cursor()
+
+            # Check if today's attendance already exists
+            cursor.execute(
+             "SELECT * FROM attendence WHERE id=%s AND date=%s",
+                (id, today)
+            )
+
+            record = cursor.fetchone()
+            if record:
+                in_time = record[2]
+
+                if record[3] is None:        # out_time is NULL
+
+                    minutes = (datetime.now() - in_time).total_seconds()/60
+
+                if minutes >= 1:
+                    cursor.execute(
+                    "UPDATE attendence SET out_time=%s WHERE id=%s AND date=%s",
+                        (datetime.now(), id, today)
+                )
+                    db.commit()
+
+                    print("Exit Time Stored")
+
+            # If no attendance exists for today, insert it
+            if record is None:
+                cursor.execute(
+                    "INSERT INTO attendence (id, date,in_time) VALUES (%s, %s, %s)",
+                    (id, today, current_time)
+                )
+                db.commit()
+                print("entry time stored")
+
+            cursor.close()
+            db.close()
+
+            
+
         else:
             name = "Unknown"
 
