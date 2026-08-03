@@ -18,8 +18,11 @@ def recognize():
     import recognizer
 
 def attend():
-    pass
+    from attendence import button
 
+
+def all():
+    import search_attendence
 # all tkinter input buttons 
 
 
@@ -29,9 +32,9 @@ b2 = Button(root,text="capture",command=cap)
 b2.pack()
 b3 = Button(root,text="trainer",command=train)
 b3.pack()
-b4 = Button(root,text="reccognize")
+b4 = Button(root,text="reccognize",command=recognize)
 b4.pack()
-b5 = Button(root,text="show all attendence")
+b5 = Button(root,text="show all attendence",command=attend)
 b5.pack()
 b6 = Button(root,text="search attendence")
 b6.pack()
