@@ -27,17 +27,17 @@ def all():
 
 
 b1  = Button(root,text="register",command=details)
-b1.pack()
+b1.place(x=130, y=50, width=150 , height= 50)
 b2 = Button(root,text="capture",command=cap)
-b2.pack()
+b2.place(x=130, y=110, width=150 , height= 50)
 b3 = Button(root,text="trainer",command=train)
-b3.pack()
+b3.place(x=130, y=170, width=150 , height= 50)
 b4 = Button(root,text="reccognize",command=recognize)
-b4.pack()
+b4.place(x=130, y=230, width=150 , height= 50)
 b5 = Button(root,text="show all attendence",command=attend)
-b5.pack()
+b5.place(x=130, y=290, width=150 , height= 50)
 b6 = Button(root,text="search attendence")
-b6.pack()
+b6.place(x=130, y=350, width=150 , height= 50)
 
 
 mainloop()
