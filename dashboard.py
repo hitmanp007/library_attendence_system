@@ -25,6 +25,8 @@ def all():
     import search_attendence
 # all tkinter input buttons 
 
+l1 = Label(root,text="Library Attendence System")
+l1.place(x=650, y=20, width=150 , height= 20)
 
 b1  = Button(root,text="register",command=details)
 b1.place(x=130, y=50, width=150 , height= 50)
